@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tryzub/static/css/main.7acaea2f.css",
+    "main.js": "/tryzub/static/js/main.07d3183d.js",
+    "index.html": "/tryzub/index.html",
+    "main.7acaea2f.css.map": "/tryzub/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/tryzub/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
