@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { MainMenu } from './MainMenu';
 import { Social } from './Social';
 import logo from '../../img/logo_scratch.jpg';
+import { Langs } from './Langs';
 
 export const Header = () => {
   return (
@@ -14,6 +15,7 @@ export const Header = () => {
         Donate
       </button>
       <Social />
+      <Langs />
     </div>
   );
 };
