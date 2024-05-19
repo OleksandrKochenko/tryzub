@@ -1,3 +1,13 @@
+import { CarouselElement } from 'components/elements/Carousel';
+
 export const HomePage = () => {
-  return <div>Tryzub Main Page</div>;
+  return (
+    <div>
+      <CarouselElement />
+      {
+        /* Here should be important text for search engines*/
+        <h1>Tryzub Main Page</h1>
+      }
+    </div>
+  );
 };
