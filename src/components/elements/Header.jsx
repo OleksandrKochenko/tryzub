@@ -14,7 +14,7 @@ export const Header = () => {
       <button className="p-2 border-2 h-fit bg-red-400" type="button">
         Donate
       </button>
-      <Social />
+      <Social styles="header"/>
       <Langs />
     </div>
   );
