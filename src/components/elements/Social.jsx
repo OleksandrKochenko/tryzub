@@ -1,39 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { socialData } from '../../data/elementsData';
 
-export const Social = () => {
+export const Social = ({styles}) => {
   return (
     <div className="flex items-center">
-      <NavLink>
+      {socialData.map(({icon, style, link}, idx)=>{return( 
+      <NavLink key = {idx} to={link} target='_blank'>
         <Icon
-          icon="line-md:facebook"
-          className="text-[4vh] text-gray-500 mx-1"
+          icon={icon}
+          className={style[styles]}
         />
-      </NavLink>
-      <NavLink>
-        <Icon
-          icon="line-md:instagram"
-          className="text-[4vh] text-gray-500 mx-1"
-        />
-      </NavLink>
-      <NavLink>
-        <Icon
-          icon="line-md:youtube"
-          className="text-[5vh] text-gray-500 mx-1"
-        />
-      </NavLink>
-      <NavLink>
-        <Icon
-          icon="line-md:twitter-x"
-          className="text-[3.5vh] text-gray-500 mx-1"
-        />
-      </NavLink>
-      <NavLink>
-        <Icon
-          icon="line-md:telegram"
-          className="text-[4vh] text-gray-500 mx-1"
-        />
-      </NavLink>
+      </NavLink>)})}
     </div>
   );
 };
