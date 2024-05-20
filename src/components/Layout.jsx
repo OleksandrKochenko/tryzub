@@ -1,11 +1,12 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './elements/Header';
+import { Footer } from './elements/Footer';
 
 export const Layout = () => {
   return (
     <div>
-      <header>
+      <header className="h-[15vh]">
         <Header />
       </header>
       <main>
@@ -13,7 +14,9 @@ export const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
-      <footer></footer>
+      <footer>
+        <Footer/>
+      </footer>
     </div>
   );
 };

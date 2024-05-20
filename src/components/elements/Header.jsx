@@ -6,9 +6,9 @@ import { Langs } from './Langs';
 
 export const Header = () => {
   return (
-    <div className="bg-[#EBEDEC] flex justify-evenly items-center">
+    <div className="bg-[#EBEDEC] flex justify-evenly items-center h-[15vh]">
       <NavLink to={'/'}>
-        <img src={logo} alt="UCA Tryzub" width={280} />
+        <img src={logo} alt="UCA Tryzub" className="h-full max-h-[15vh] w-auto" />
       </NavLink>
       <MainMenu />
       <button className="p-2 border-2 h-fit bg-red-400" type="button">

@@ -48,7 +48,7 @@ export const CarouselElement = () => {
         {carouselData.map(({ img, alt, title, description }, idx) => {
           return (
             <div key={idx} className="relative">
-              <img src={img} alt={alt} className="h-[80vh] object-cover" />
+              <img src={img} alt={alt} className="h-[85vh] object-cover" />
               <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000]">
                 <h2 className="text-white text-[38px]">{title}</h2>
                 <p className="text-white text-[20px]">{description}</p>
