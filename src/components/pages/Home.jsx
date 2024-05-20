@@ -2,7 +2,7 @@ import { CarouselElement } from 'components/elements/Carousel';
 
 export const HomePage = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <CarouselElement />
       {
         /* Here should be important text for search engines*/

@@ -4,6 +4,13 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 // fake data, will be replaced by actual current data
 const carouselData = [
   {
+    img: 'https://res.cloudinary.com/dvloxectq/image/upload/v1716174195/samples/afisha_fk62y9.webp',
+    alt: 'Iryna Fedyshyn Brandon, MB announce',
+    title: 'Iryna Fedyshyn',
+    description:
+      'June 1 2024. Keystone Centre Amphitheater, 1775 18th St., Brandon, MB. Supporting by UCA "Tryzub"',
+  },
+  {
     img: 'https://res.cloudinary.com/dvloxectq/image/upload/v1696781881/samples/balloons.jpg',
     alt: 'balloons',
     title: 'Title #1',
@@ -28,7 +35,7 @@ const carouselData = [
 
 export const CarouselElement = () => {
   return (
-    <div>
+    <div className="w-[80%] shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]">
       <Carousel
         showThumbs={false}
         showStatus={false}
@@ -37,11 +44,10 @@ export const CarouselElement = () => {
         autoPlay={true}
         stopOnHover={false}
         interval={10000}
-        width={'fit'}
       >
-        {carouselData.map(({ img, alt, title, description }) => {
+        {carouselData.map(({ img, alt, title, description }, idx) => {
           return (
-            <div className="relative">
+            <div key={idx} className="relative">
               <img src={img} alt={alt} className="h-[80vh] object-cover" />
               <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000]">
                 <h2 className="text-white text-[38px]">{title}</h2>
