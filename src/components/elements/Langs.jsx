@@ -15,13 +15,13 @@ export const Langs = () => {
           icon="circle-flags:ua"
           className="text-[3.5vh] cursor-pointer"
           onClick={() => dispatch(switchLang('eng'))}
-        />
+      />
       ) : (
         <Icon
-          icon="circle-flags:uk"
+          icon="circle-flags:ca"
           className="text-[3.5vh] cursor-pointer"
           onClick={() => dispatch(switchLang('ukr'))}
-        />
+      />
       )}
     </div>
   );

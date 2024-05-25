@@ -5,11 +5,11 @@ import { socialData } from '../../data/elementsData';
 export const Social = ({styles}) => {
   return (
     <div className="flex items-center">
-      {socialData.map(({icon, style, link}, idx)=>{return( 
-      <NavLink key = {idx} to={link} target='_blank'>
+      {socialData.map(({icon, style, link, hoverColor}, idx)=>{return( 
+      <NavLink key = {idx} to={link} target='_blank' rel="noopener noreferrer">
         <Icon
           icon={icon}
-          className={style[styles]}
+          className={`${style[styles]} ${hoverColor} transition-colors duration-300`}
         />
       </NavLink>)})}
     </div>

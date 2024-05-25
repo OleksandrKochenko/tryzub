@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getLang } from '../../redux/selectors';
 
 export const MainMenu = () => {
+  const lang = useSelector(getLang);
   return (
     <ul className="flex items-center">
       <li className="mx-6">
@@ -10,7 +13,7 @@ export const MainMenu = () => {
             navData.isActive ? 'border-b border-red-400' : ''
           }
         >
-          Home
+          {lang === 'eng' ? 'Home' : 'Головна'}
         </NavLink>
       </li>
       <li className="mx-6">
@@ -20,7 +23,7 @@ export const MainMenu = () => {
             navData.isActive ? 'border-b border-red-400' : ''
           }
         >
-          Contacts
+          {lang === 'eng' ? 'Contacts' : 'Контакти'}
         </NavLink>
       </li>
       <li className="mx-6">
@@ -30,7 +33,7 @@ export const MainMenu = () => {
             navData.isActive ? 'border-b border-red-400' : ''
           }
         >
-          Events
+          {lang === 'eng' ? 'Events' : 'Події'}
         </NavLink>
       </li>
       <li className="mx-6">
@@ -40,7 +43,7 @@ export const MainMenu = () => {
             navData.isActive ? 'border-b border-red-400' : ''
           }
         >
-          Gallery
+          {lang === 'eng' ? 'Gallery' : 'Галерея'}
         </NavLink>
       </li>
     </ul>
