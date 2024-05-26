@@ -6,7 +6,6 @@ import { switchLang } from '../../redux/user/slice';
 export const Langs = () => {
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
-  console.log('lang', lang);
 
   return (
     <div className="flex">
