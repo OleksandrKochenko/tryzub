@@ -1,0 +1,60 @@
+version: '3'
+services:
+  db:
+    image: postgres:13
+    restart: always
+    user: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=9XOB2tH4arJXYcB
+      - POSTGRES_DB=postgres
+    ports:
+      - "5892:5432"
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db-migration:
+    build:
+      context: ./db-migrations
+    environment:
+      - DB_URL=postgres://postgres:9XOB2tH4arJXYcB@db/postgres?sslmode=disable
+      - MIGRATIONS_PATH=./migrations
+    volumes:
+      - ./db-migrations/config.json:/config.json
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - 3001:3001
+    depends_on:
+      db:
+        condition: service_healthy
+      db-migration:
+        condition: service_completed_successfully
+    restart: always
+
+  frontend:
+    build:
+      context: ./
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      backend:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:

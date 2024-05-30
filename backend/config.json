@@ -1,0 +1,7 @@
+{
+  "db": {
+    "url": "postgres://postgres:9XOB2tH4arJXYcB@db/postgres?sslmode=disable",
+    "driver": "postgres"
+  },
+  "port": "3001"
+}
