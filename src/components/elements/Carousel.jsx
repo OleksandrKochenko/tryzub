@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { fetchMainEvents } from '../../redux/events/operations_';
-import { getEvents } from '../../redux/selectors';
+import { getEvents, getLang } from '../../redux/selectors';
 
 // fake data, will be replaced by actual current data
 const carouselData = [
@@ -44,7 +44,8 @@ export const CarouselElement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { events_ } = useSelector(getEvents);
-  console.log('events', events_);
+  const lang = useSelector(getLang);
+
   return (
     <div className="w-[80%] shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]">
       <Carousel
@@ -56,6 +57,26 @@ export const CarouselElement = () => {
         stopOnHover={false}
         interval={10000}
       >
+        {events_ &&
+          events_.map(({ _id, coverImg, title, description }) => {
+            return (
+              <div key={_id} className="relative">
+                <img
+                  src={coverImg}
+                  alt={lang === 'eng' ? title.en : title.ua}
+                  className="h-[85vh] object-cover"
+                />
+                <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000]">
+                  <h2 className="text-white text-[38px]">
+                    {lang === 'eng' ? title.en : title.ua}
+                  </h2>
+                  <p className="text-white text-[20px]">
+                    {lang === 'eng' ? description.en : description.ua}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         {carouselData.map(({ img, alt, title, description }, idx) => {
           return (
             <div key={idx} className="relative">

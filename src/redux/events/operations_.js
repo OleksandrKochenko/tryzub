@@ -8,7 +8,6 @@ export const fetchMainEvents = createAsyncThunk(
       const { data } = await axios.get(
         'http://localhost:4000/events?emphasize'
       );
-      console.log('data', data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
