@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { mockData } from './mockData';
 import { fetchPhotos } from './operations';
-import { handlePhotosFulfilled } from './actions';
+import { handleEventsFulfilled, handlePhotosFulfilled } from './actions';
+import { fetchMainEvents } from './operations_';
 
 const initialState = {
   events: mockData,
+  events_: [],
   currentEvent: {
     title: '',
     description: '',
@@ -25,7 +27,9 @@ const eventsSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(fetchPhotos.fulfilled, handlePhotosFulfilled);
+    builder
+      .addCase(fetchPhotos.fulfilled, handlePhotosFulfilled)
+      .addCase(fetchMainEvents.fulfilled, handleEventsFulfilled);
   },
 });
 
