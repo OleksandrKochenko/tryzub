@@ -1,41 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Icon } from '@iconify/react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { fetchMainEvents } from '../../redux/events/operations_';
 import { getEvents, getLang } from '../../redux/selectors';
-
-// fake data, will be replaced by actual current data
-const carouselData = [
-  {
-    img: 'https://res.cloudinary.com/dvloxectq/image/upload/v1716174195/samples/afisha_fk62y9.webp',
-    alt: 'Iryna Fedyshyn Brandon, MB announce',
-    title: 'Iryna Fedyshyn',
-    description:
-      'June 1 2024. Keystone Centre Amphitheater, 1775 18th St., Brandon, MB. Supporting by UCA "Tryzub"',
-  },
-  {
-    img: 'https://res.cloudinary.com/dvloxectq/image/upload/v1696781881/samples/balloons.jpg',
-    alt: 'balloons',
-    title: 'Title #1',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum cupiditate nostrum provident minima sequi blanditiis?',
-  },
-  {
-    img: 'https://res.cloudinary.com/dvloxectq/image/upload/v1696781882/samples/breakfast.jpg',
-    alt: 'breackfast',
-    title: 'Title #2',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ad facilis corrupti.',
-  },
-  {
-    img: 'https://res.cloudinary.com/dvloxectq/image/upload/v1696781884/samples/chair-and-coffee-table.jpg',
-    alt: 'cactus',
-    title: 'Title #3',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, alias. Placeat, eius asperiores?',
-  },
-];
 
 export const CarouselElement = () => {
   const dispatch = useDispatch();
@@ -58,36 +27,65 @@ export const CarouselElement = () => {
         interval={10000}
       >
         {events_ &&
-          events_.map(({ _id, coverImg, title, description }) => {
-            return (
-              <div key={_id} className="relative">
-                <img
-                  src={coverImg}
-                  alt={lang === 'eng' ? title.en : title.ua}
-                  className="h-[85vh] object-cover"
-                />
-                <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000]">
-                  <h2 className="text-white text-[38px]">
-                    {lang === 'eng' ? title.en : title.ua}
-                  </h2>
-                  <p className="text-white text-[20px]">
-                    {lang === 'eng' ? description.en : description.ua}
-                  </p>
+          events_.map(
+            ({ _id, coverImg, title, announce, address, startDate }) => {
+              const date = new Date(startDate);
+              const options = {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              };
+              const hours = date.getHours();
+              const ampm = hours >= 12 ? 'pm' : 'am';
+              let hoursCa = hours % 12;
+              hoursCa = hoursCa.toString() ? hoursCa : '12';
+              const minutes = date.getMinutes().toString().padStart(2, '0');
+              const time =
+                ' ' +
+                (lang === 'ukr'
+                  ? hours.toString() + ':' + minutes
+                  : hoursCa + ':' + minutes + ' ' + ampm);
+
+              return (
+                <div key={_id} className="relative">
+                  <img
+                    src={coverImg}
+                    alt={lang === 'eng' ? title.en : title.ua}
+                    className="h-[85vh] object-cover"
+                  />
+                  <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000]">
+                    <h2 className="text-white text-[38px]">
+                      {lang === 'eng' ? title.en : title.ua}
+                    </h2>
+                    <p className="text-white text-[20px]">
+                      {lang === 'eng' ? announce.en : announce.ua}
+                    </p>
+                    <div className="w-full flex justify-center">
+                      <div className="flex items-center text-orange-400 text-[20px] mr-4">
+                        <Icon icon="mdi:place-outline" />
+                        <span className="mx-2">
+                          {lang === 'eng'
+                            ? address.en
+                            : address.ua === ''
+                            ? address.en
+                            : address.ua}
+                        </span>
+                      </div>
+                      <div className="flex items-center text-orange-400 text-[20px] ">
+                        <Icon icon="ion:calendar-outline" />
+                        <span className="mx-2">
+                          {lang === 'eng'
+                            ? date.toLocaleDateString('en-EN', options) + time
+                            : date.toLocaleDateString('ua-UA', options) + time}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        {carouselData.map(({ img, alt, title, description }, idx) => {
-          return (
-            <div key={idx} className="relative">
-              <img src={img} alt={alt} className="h-[85vh] object-cover" />
-              <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000]">
-                <h2 className="text-white text-[38px]">{title}</h2>
-                <p className="text-white text-[20px]">{description}</p>
-              </div>
-            </div>
-          );
-        })}
+              );
+            }
+          )}
       </Carousel>
     </div>
   );
