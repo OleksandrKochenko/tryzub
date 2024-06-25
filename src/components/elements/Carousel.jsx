@@ -54,11 +54,11 @@ export const CarouselElement = () => {
                     alt={lang === 'eng' ? title.en : title.ua}
                     className="h-[85vh] object-cover"
                   />
-                  <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000]">
+                  <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000] flex flex-col items-center">
                     <h2 className="text-white text-[38px]">
                       {lang === 'eng' ? title.en : title.ua}
                     </h2>
-                    <p className="text-white text-[20px]">
+                    <p className="text-white text-[20px] w-[90%] ">
                       {lang === 'eng' ? announce.en : announce.ua}
                     </p>
                     <div className="w-full flex justify-center">
