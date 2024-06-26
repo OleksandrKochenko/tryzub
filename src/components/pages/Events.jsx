@@ -1,36 +1,80 @@
-import { Widget } from "components/elements/Widget";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchEvents } from '../../redux/events/operations_';
+import { getEvents, getLang } from '../../redux/selectors';
+import { Widget } from 'components/elements/Widget';
 
 export const EventsPage = () => {
   const cardsData = [
     {
-      imgSrc: "https://res.cloudinary.com/dvloxectq/image/upload/v1696781885/samples/dessert-on-a-plate.jpg",
-      date: "27",
-      month: "March",
-      title: "Best View in Newyork City",
-      description: "The city that never sleeps",
-      time: "6 mins ago"
+      imgSrc:
+        'https://res.cloudinary.com/dvloxectq/image/upload/v1696781885/samples/dessert-on-a-plate.jpg',
+      date: '27',
+      month: 'March',
+      title: 'Best View in Newyork City',
+      description: 'The city that never sleeps',
+      time: '6 mins ago',
     },
     {
-      imgSrc: "https://res.cloudinary.com/dvloxectq/image/upload/v1696781883/samples/man-on-a-street.jpg",
-      date: "20",
-      month: "March",
-      title: "Best Pizza in Town",
-      description: "The collection of best pizza images in Newyork city",
-      time: "3 mins read"
+      imgSrc:
+        'https://res.cloudinary.com/dvloxectq/image/upload/v1696781883/samples/man-on-a-street.jpg',
+      date: '20',
+      month: 'March',
+      title: 'Best Pizza in Town',
+      description: 'The collection of best pizza images in Newyork city',
+      time: '3 mins read',
     },
     {
-      imgSrc: "https://res.cloudinary.com/dvloxectq/image/upload/v1696781883/samples/outdoor-woman.jpg",
-      date: "15",
-      month: "April",
-      title: "Best Salad Images ever",
-      description: "The collection of best salads of town in pictures",
-      time: "6 mins read"
-    }
+      imgSrc:
+        'https://res.cloudinary.com/dvloxectq/image/upload/v1696781883/samples/outdoor-woman.jpg',
+      date: '15',
+      month: 'April',
+      title: 'Best Salad Images ever',
+      description: 'The collection of best salads of town in pictures',
+      time: '6 mins read',
+    },
   ];
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchEvents('up'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const { events_ } = useSelector(getEvents);
+  const lang = useSelector(getLang);
 
   return (
     <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
+        {events_.map(
+          ({ id_, coverImg, title, announce, startDate, address }) => {
+            const date = new Date(startDate);
+            const day = date.getDate();
+            const monthEn = date.toLocaleString('en-EN', { month: 'short' });
+            const monthUa = date.toLocaleString('ua-UA', { month: 'short' });
+            const minutes = date.getMinutes();
+            const hours = date.getHours();
+
+            return (
+              <Widget
+                key={id_}
+                imgSrc={coverImg}
+                date={day}
+                month={lang === 'eng' ? monthEn : monthUa}
+                title={lang === 'eng' ? title.en : title.ua}
+                description={lang === 'eng' ? announce.en : announce.ua}
+                time={hours + ':' + minutes}
+                place={
+                  lang === 'eng'
+                    ? address.en
+                    : address.ua === ''
+                    ? address.en
+                    : address.ua
+                }
+              />
+            );
+          }
+        )}
         {cardsData.map((card, index) => (
           <Widget
             key={index}

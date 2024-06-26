@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { mockData } from './mockData';
 import { fetchPhotos } from './operations';
 import { handleEventsFulfilled, handlePhotosFulfilled } from './actions';
-import { fetchMainEvents } from './operations_';
+import { fetchEvents } from './operations_';
 
 const initialState = {
   events: mockData,
@@ -29,7 +29,7 @@ const eventsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchPhotos.fulfilled, handlePhotosFulfilled)
-      .addCase(fetchMainEvents.fulfilled, handleEventsFulfilled);
+      .addCase(fetchEvents.fulfilled, handleEventsFulfilled);
   },
 });
 

@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Icon } from '@iconify/react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { fetchMainEvents } from '../../redux/events/operations_';
+import { fetchEvents } from '../../redux/events/operations_';
 import { getEvents, getLang } from '../../redux/selectors';
 
 export const CarouselElement = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchMainEvents());
+    dispatch(fetchEvents('emphasize'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { events_ } = useSelector(getEvents);
