@@ -1,7 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
 export const Widget = ({
+  id,
   imgSrc,
   date,
   month,
@@ -13,10 +15,10 @@ export const Widget = ({
   return (
     <div className="rounded overflow-hidden shadow-lg">
       <div className="relative">
-        <a href="/">
+        <NavLink to={`/events/${id}`}>
           <img className="w-full" src={imgSrc} alt={title} />
           <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
-        </a>
+        </NavLink>
         <a href="#!">
           <div className="absolute bottom-0 left-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
             Photos

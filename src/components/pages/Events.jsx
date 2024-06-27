@@ -47,7 +47,7 @@ export const EventsPage = () => {
     <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
         {events_.map(
-          ({ id_, coverImg, title, announce, startDate, address }) => {
+          ({ _id, coverImg, title, announce, startDate, address }) => {
             const date = new Date(startDate);
             const day = date.getDate();
             const monthEn = date.toLocaleString('en-EN', { month: 'short' });
@@ -57,7 +57,8 @@ export const EventsPage = () => {
 
             return (
               <Widget
-                key={id_}
+                key={_id}
+                id={_id}
                 imgSrc={coverImg}
                 date={day}
                 month={lang === 'eng' ? monthEn : monthUa}

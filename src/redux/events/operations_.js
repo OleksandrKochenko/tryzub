@@ -12,3 +12,15 @@ export const fetchEvents = createAsyncThunk(
     }
   }
 );
+
+export const fetchEventById = createAsyncThunk(
+  'api/currentEvent',
+  async (id, thunkApi) => {
+    try {
+      const { data } = await axios.get(`http://localhost:4000/events/${id}`);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

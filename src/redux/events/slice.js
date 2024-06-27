@@ -1,8 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { mockData } from './mockData';
 import { fetchPhotos } from './operations';
-import { handleEventsFulfilled, handlePhotosFulfilled } from './actions';
-import { fetchEvents } from './operations_';
+import {
+  handleEventByIdFulfilled,
+  handleEventsFulfilled,
+  handlePending,
+  handlePhotosFulfilled,
+  handleReject,
+} from './actions';
+import { fetchEventById, fetchEvents } from './operations_';
 
 const initialState = {
   events: mockData,
@@ -14,6 +20,7 @@ const initialState = {
     date: null,
     photos: {},
   },
+  currentEvent_: null,
   isLoading: false,
   error: null,
 };
@@ -29,7 +36,12 @@ const eventsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchPhotos.fulfilled, handlePhotosFulfilled)
-      .addCase(fetchEvents.fulfilled, handleEventsFulfilled);
+      .addCase(fetchEvents.pending, handlePending)
+      .addCase(fetchEvents.fulfilled, handleEventsFulfilled)
+      .addCase(fetchEvents.rejected, handleReject)
+      .addCase(fetchEventById.pending, handlePending)
+      .addCase(fetchEventById.fulfilled, handleEventByIdFulfilled)
+      .addCase(fetchEventById.rejected, handleReject);
   },
 });
 
