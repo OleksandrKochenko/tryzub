@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { MainMenu } from './MainMenu';
 import { Social } from './Social';
-import logo from '../../img/logo_test.jpg';
+import logo from '../../img/logo_scratch.jpg';
 import { Langs } from './Langs';
 import { useSelector } from 'react-redux';
 import { getLang } from '../../redux/selectors';
