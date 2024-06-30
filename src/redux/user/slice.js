@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  lang: 'eng',
+  lang: 'en',
   // could be added other user preferences: light/dark mode, favorites, etc.
 };
 

@@ -61,17 +61,11 @@ export const EventsPage = () => {
                 id={_id}
                 imgSrc={coverImg}
                 date={day}
-                month={lang === 'eng' ? monthEn : monthUa}
-                title={lang === 'eng' ? title.en : title.ua}
-                description={lang === 'eng' ? announce.en : announce.ua}
+                month={lang === 'en' ? monthEn : monthUa}
+                title={title[lang]}
+                description={announce[lang]}
                 time={hours + ':' + minutes}
-                place={
-                  lang === 'eng'
-                    ? address.en
-                    : address.ua === ''
-                    ? address.en
-                    : address.ua
-                }
+                place={address[lang] || address.en}
               />
             );
           }

@@ -43,7 +43,7 @@ export const CarouselElement = () => {
               const minutes = date.getMinutes().toString().padStart(2, '0');
               const time =
                 ' ' +
-                (lang === 'ukr'
+                (lang === 'ua'
                   ? hours.toString() + ':' + minutes
                   : hoursCa + ':' + minutes + ' ' + ampm);
 
@@ -51,31 +51,25 @@ export const CarouselElement = () => {
                 <div key={_id} className="relative">
                   <img
                     src={coverImg}
-                    alt={lang === 'eng' ? title.en : title.ua}
+                    alt={title[lang]}
                     className="h-[85vh] object-cover"
                   />
                   <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000] flex flex-col items-center">
-                    <h2 className="text-white text-[38px]">
-                      {lang === 'eng' ? title.en : title.ua}
-                    </h2>
+                    <h2 className="text-white text-[38px]">{title[lang]}</h2>
                     <p className="text-white text-[20px] w-[90%] ">
-                      {lang === 'eng' ? announce.en : announce.ua}
+                      {announce[lang]}
                     </p>
                     <div className="w-full flex justify-center">
                       <div className="flex items-center text-orange-400 text-[20px] mr-4">
                         <Icon icon="mdi:place-outline" />
                         <span className="mx-2">
-                          {lang === 'eng'
-                            ? address.en
-                            : address.ua === ''
-                            ? address.en
-                            : address.ua}
+                          {address[lang] || address.en}
                         </span>
                       </div>
                       <div className="flex items-center text-orange-400 text-[20px] ">
                         <Icon icon="ion:calendar-outline" />
                         <span className="mx-2">
-                          {lang === 'eng'
+                          {lang === 'en'
                             ? date.toLocaleDateString('en-EN', options) + time
                             : date.toLocaleDateString('ua-UA', options) + time}
                         </span>
