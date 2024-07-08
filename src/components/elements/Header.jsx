@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { MainMenu } from './MainMenu';
 import { Social } from './Social';
-import logo from '../../img/logo_scratch.jpg';
+import logo from '../../img/logo_test.jpg';
 import { Langs } from './Langs';
 import { useSelector } from 'react-redux';
 import { getLang } from '../../redux/selectors';
@@ -17,7 +17,7 @@ export const Header = () => {
       </NavLink>
       <MainMenu />
       <button
-        className="p-2 border-2 h-fit bg-red-400 flex justify-center items-center"
+        className="p-2  h-fit bg-red-400 flex justify-center items-center hover:scale-110 transition-transform duration-300"
         type="button"
       >
         <Icon icon="openmoji:light-blue-heart" className="mr-1 text-[22px]" />
