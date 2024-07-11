@@ -3,7 +3,7 @@
   "author": "Alex Kochenko",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tryzub.vercel.app/",
+  "homepage": "https://OleksandrKochenko.github.io/tryzub/",
   "dependencies": {
     "@iconify/react": "^4.1.1",
     "@reduxjs/toolkit": "^2.2.5",
