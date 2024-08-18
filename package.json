@@ -1,9 +1,9 @@
 {
   "name": "tryzub-web-page",
-  "author": "Alex Kochenko",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://OleksandrKochenko.github.io/tryzub/",
+  "homepage": "https://tryzub.vercel.app/",
+  "author": "Alex Kochenko",
   "dependencies": {
     "@iconify/react": "^4.1.1",
     "@reduxjs/toolkit": "^2.2.5",
