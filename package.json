@@ -2,7 +2,6 @@
   "name": "tryzub-web-page",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tryzub.vercel.app/",
   "author": "Alex Kochenko",
   "dependencies": {
     "@iconify/react": "^4.1.1",
