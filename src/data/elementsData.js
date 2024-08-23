@@ -108,6 +108,7 @@ export const homePageData = {
           ua: 'Ви можете надіслати електронний переказ на адресу ucat@gmail.com, щоб підтримати військові, дитячі та інші ініціативи України.',
           en: 'You can send an e-Transfer to ucat@gmail.com to support Ukraine’s military, children and other initiatives.',
         },
+        icon: 'mage:money-exchange',
       },
       {
         name: { ua: 'Пожертвування готівкою', en: 'Donation by cash' },
@@ -115,6 +116,7 @@ export const homePageData = {
           ua: 'Приєднуйтесь до наших культурних заходів та вистав, щоб відчути українські традиції. Пожертви можна зробити особисто за допомогою нашої скриньки для пожертв.',
           en: 'Join us at our cultural events and performances to experience Ukrainian traditions. Donations can be made in person using our donation box.',
         },
+        icon: 'healthicons:money-bag-outline',
       },
       {
         name: {
@@ -125,6 +127,7 @@ export const homePageData = {
           ua: 'Придбайте українські сувеніри, вироби та традиційні страви виготовлені нашими волонтерами. Усі кошти йдуть на підтримку України.',
           en: 'Purchase Ukrainian souvenirs, products and traditional food made by our volunteers. All proceeds go towards supporting Ukraine.',
         },
+        icon: 'arcticons:ukraine-tryzub',
       },
       {
         name: { ua: 'Контакт для пожертвувань', en: 'Contact for Donations' },
@@ -132,6 +135,7 @@ export const homePageData = {
           ua: 'Щоб дізнатися про інші способи пожертвування, звертайтеся до Вартана Давтяна - (204) 720-7083',
           en: 'For other methods to donate, please contact Vartan Davtian - (204) 720-7083',
         },
+        icon: 'healthicons:communication-outline',
       },
     ],
     thanks: {

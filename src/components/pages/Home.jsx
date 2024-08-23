@@ -5,6 +5,7 @@ import { homePageData } from 'data/elementsData';
 import { Values } from 'components/elements/Values';
 import { News } from 'components/elements/News';
 import { Donations } from 'components/elements/Donations';
+import { SeparationLine } from 'components/elements/SeparationLine';
 
 export const HomePage = () => {
   const lang = useSelector(getLang);
@@ -19,8 +20,11 @@ export const HomePage = () => {
         </h1>
       }
       <Values />
+      <SeparationLine />
       <News />
+      <SeparationLine />
       <Donations />
+      <SeparationLine />
     </div>
   );
 };

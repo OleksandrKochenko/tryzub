@@ -6,7 +6,7 @@ export const News = () => {
   const lang = useSelector(getLang);
 
   return (
-    <div className="w-4/5 my-10">
+    <div className="w-4/5 ">
       <h5 className="font-semibold text-2xl text-gray-900">
         {homePageData.news[lang]}
       </h5>

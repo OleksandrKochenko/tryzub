@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -49,11 +50,13 @@ export const CarouselElement = () => {
 
               return (
                 <div key={_id} className="relative">
-                  <img
-                    src={coverImg}
-                    alt={title[lang]}
-                    className="h-[85vh] object-cover"
-                  />
+                  <NavLink to={`/events/${_id}`} className="flex h-fit">
+                    <img
+                      src={coverImg}
+                      alt={title[lang]}
+                      className="h-[85vh] object-cover"
+                    />
+                  </NavLink>
                   <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000] flex flex-col items-center">
                     <h2 className="text-white text-[38px]">{title[lang]}</h2>
                     <p className="text-white text-[20px] w-[90%] ">

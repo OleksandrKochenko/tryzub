@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { MainMenu } from './MainMenu';
 import { Social } from './Social';
 import logo from '../../img/logo_test.jpg';
@@ -9,6 +9,7 @@ import { Icon } from '@iconify/react';
 
 export const Header = () => {
   const lang = useSelector(getLang);
+  const navigate = useNavigate();
 
   return (
     <div className="h-[15vh] bg-[#EBEDEC] flex justify-evenly items-center">
@@ -17,8 +18,15 @@ export const Header = () => {
       </NavLink>
       <MainMenu />
       <button
-        className="p-2  h-fit bg-red-400 flex justify-center items-center hover:scale-110 transition-transform duration-300"
+        className="p-2 h-fit bg-red-400 flex justify-center items-center hover:scale-110 transition-transform duration-300"
         type="button"
+        onClick={() => {
+          navigate('/');
+          setTimeout(() => {
+            const anchor = document.querySelector('#donations');
+            anchor.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }}
       >
         <Icon icon="openmoji:light-blue-heart" className="mr-1 text-[22px]" />
         {lang === 'en' ? 'Donate' : 'Підтримати'}
