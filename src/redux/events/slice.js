@@ -32,6 +32,9 @@ const eventsSlice = createSlice({
     setCurrentEvent(state, action) {
       state.currentEvent = action.payload;
     },
+    setCurrentEvent_(state, action) {
+      state.currentEvent_ = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -45,5 +48,5 @@ const eventsSlice = createSlice({
   },
 });
 
-export const { setCurrentEvent } = eventsSlice.actions;
+export const { setCurrentEvent, setCurrentEvent_ } = eventsSlice.actions;
 export const eventsReducer = eventsSlice.reducer;

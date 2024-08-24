@@ -1,40 +1,38 @@
 import { Icon } from '@iconify/react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getEvents } from '../../redux/selectors';
-import { setCurrentEvent } from '../../redux/events/slice';
+import { useSelector } from 'react-redux';
+import { getEvents, getLang } from '../../redux/selectors';
 
 export const EventsList = () => {
-  const { events, currentEvent } = useSelector(getEvents);
-  const dispatch = useDispatch();
+  const { events_ } = useSelector(getEvents);
+  const oneEvent = [...events_].filter(
+    el => el._id === '66ca32de1ac9187ce6b8b711'
+  );
 
-  useEffect(() => {
-    dispatch(setCurrentEvent(events[0]));
+  const lang = useSelector(getLang);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
+  return events_.length !== 0 ? (
     <ul>
-      {events.map((event, idx) => {
+      {oneEvent.map(event => {
+        const date = new Date(event.startDate);
+
         return (
-          <li key={idx} className="mb-4">
+          <li key={event._id} className="mb-4">
             <h3
-              className={`uppercase hover:underline cursor-pointer ${
-                event.title === currentEvent.title ? 'underline' : ''
-              }`}
-              onClick={() => dispatch(setCurrentEvent(event))}
+              className={`uppercase hover:underline cursor-pointer `}
+              onClick={() => console.log('clicked')}
             >
-              {event.title}
+              {event.title[lang]}
             </h3>
             <div className="flex items-center text-xs text-gray-500">
-              <p className="mr-2">{event.date}</p>
+              <p className="mr-2">{date.toDateString()}</p>
               <Icon icon="ep:location" />
-              <p className="capitalize">{event.location}</p>
+              <p className="capitalize">{event.address.en}</p>
             </div>
           </li>
         );
       })}
     </ul>
+  ) : (
+    <p>Loading...</p>
   );
 };

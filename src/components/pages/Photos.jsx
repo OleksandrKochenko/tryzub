@@ -1,7 +1,15 @@
 import { EventsList } from 'components/elements/EventsList';
 import { Gallery } from 'components/elements/Gallery';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchEvents } from '../../redux/events/operations_';
 
 export const PhotosPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchEvents());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="flex w-full">
       <section className="w-[20%]  p-4 ">
