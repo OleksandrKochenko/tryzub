@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { userReducer } from './user/slice';
 import { eventsReducer } from './events/slice';
+import { newsReducer } from './news/slice';
 
 const userPersistConfig = {
   key: 'user',
@@ -23,6 +24,7 @@ export const store = configureStore({
   reducer: {
     user: persistReducer(userPersistConfig, userReducer),
     events: eventsReducer,
+    news: newsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

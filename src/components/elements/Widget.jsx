@@ -40,37 +40,22 @@ export const Widget = ({
         </a>
         <p className="text-gray-500 text-sm">{description}</p>
       </div>
-      <div className="px-6 py-4 flex flex-row items-center">
+      <div className="px-6 py-1 flex flex-row items-center">
         <span className="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">
-          <svg
-            height="13px"
-            width="13px"
-            version="1.1"
-            id="Layer_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 512 512"
-            style={{ enableBackground: 'new 0 0 512 512' }}
-            xmlSpace="preserve"
-          >
-            <g>
-              <g>
-                <path
-                  d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256
-                    c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128
-                    c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z"
-                ></path>
-              </g>
-            </g>
-          </svg>
-          <span className="ml-1">{time}</span>
+          <Icon
+            icon="mdi:calendar-clock"
+            className="text-indigo-600 mr-2 text-lg"
+          />
+          <span className="ml-1 text-sm font-semibold text-indigo-600">
+            {time}
+          </span>
         </span>
       </div>
-      <div className="px-6 py-4 flex flex-row items-center">
-        <Icon icon="mdi:place-outline" />
-        <span className="ml-1">{place}</span>
+      <div className="px-6 py-1 mb-2 flex flex-row items-center">
+        <Icon icon="mdi:map-marker" className="text-indigo-600 mr-2 text-xl" />
+        <span className="ml-1 text-sm font-semibold text-indigo-600">
+          {place}
+        </span>
       </div>
     </div>
   );

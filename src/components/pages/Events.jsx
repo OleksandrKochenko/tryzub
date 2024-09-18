@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { fetchEvents } from '../../redux/events/operations_';
 import { getEvents, getLang } from '../../redux/selectors';
 import { Widget } from 'components/elements/Widget';
+import { formatTimeAndDate } from 'data/helpers';
 
 export const EventsPage = () => {
   const cardsData = [
@@ -47,13 +48,12 @@ export const EventsPage = () => {
     <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
         {events_.map(
-          ({ _id, coverImg, title, announce, startDate, address }) => {
+          ({ _id, coverImg, title, announce, startDate, endDate, address }) => {
             const date = new Date(startDate);
             const day = date.getDate();
             const monthEn = date.toLocaleString('en-EN', { month: 'short' });
             const monthUa = date.toLocaleString('ua-UA', { month: 'short' });
-            const minutes = date.getMinutes();
-            const hours = date.getHours();
+            const time = formatTimeAndDate(startDate, endDate, lang);
 
             return (
               <Widget
@@ -64,7 +64,7 @@ export const EventsPage = () => {
                 month={lang === 'en' ? monthEn : monthUa}
                 title={title[lang]}
                 description={announce[lang]}
-                time={hours + ':' + minutes}
+                time={time}
                 place={address[lang] || address.en}
               />
             );
