@@ -17,7 +17,7 @@ export const News = () => {
 
   return (
     <div className="w-4/5 ">
-      <h5 className="font-semibold text-2xl text-gray-900">
+      <h5 className="font-semibold text-2xl text-gray-900 pb-2">
         {homePageData.news[lang]}
       </h5>
       <div className="flex justify-between w-full">
