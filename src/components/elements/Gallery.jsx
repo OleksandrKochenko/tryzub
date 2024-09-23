@@ -10,10 +10,14 @@ export const Gallery = ({ filtredEvents }) => {
   const { currentEvent_ } = useSelector(getEvents);
 
   useEffect(() => {
-    if (!currentEvent_ || !currentEvent_.gallery.length)
-      dispatch(fetchEventById(filtredEvents[0]._id));
+    if (filtredEvents.length) {
+      if (!currentEvent_ || !currentEvent_.gallery.length) {
+        dispatch(fetchEventById(filtredEvents[0]._id));
+      }
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [filtredEvents.length]);
 
   const images = currentEvent_ && currentEvent_.gallery;
 
