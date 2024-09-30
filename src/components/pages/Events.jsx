@@ -43,11 +43,18 @@ export const EventsPage = () => {
   }, []);
   const { events_ } = useSelector(getEvents);
   const lang = useSelector(getLang);
+  const today = new Date().getTime();
+  const pastEvents = [];
+  const futureEvents = [];
+  events_.forEach(el => {
+    el.startDate >= today ? futureEvents.push(el) : pastEvents.unshift(el);
+  });
+  const sortedEvents = [...futureEvents, ...pastEvents];
 
   return (
     <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-        {events_.map(
+        {sortedEvents.map(
           ({
             _id,
             coverImg,

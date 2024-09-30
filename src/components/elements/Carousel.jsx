@@ -6,6 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { fetchEvents } from '../../redux/events/operations_';
 import { getEvents, getLang } from '../../redux/selectors';
+import { formatTimeAndDate } from 'data/helpers';
 
 export const CarouselElement = () => {
   const dispatch = useDispatch();
@@ -30,24 +31,7 @@ export const CarouselElement = () => {
         {events_ &&
           events_.map(
             ({ _id, coverImg, title, announce, address, startDate }) => {
-              const date = new Date(startDate);
-              const options = {
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              };
-              const hours = date.getHours();
-              const ampm = hours >= 12 ? 'pm' : 'am';
-              let hoursCa = hours % 12;
-              hoursCa = hoursCa.toString() ? hoursCa : '12';
-              const minutes = date.getMinutes().toString().padStart(2, '0');
-              const time =
-                ' ' +
-                (lang === 'ua'
-                  ? hours.toString() + ':' + minutes
-                  : hoursCa + ':' + minutes + ' ' + ampm);
-
+              const time = formatTimeAndDate(startDate, null, lang);
               return (
                 <div key={_id} className="relative">
                   <NavLink to={`/events/${_id}`} className="flex h-fit">
@@ -71,11 +55,7 @@ export const CarouselElement = () => {
                       </div>
                       <div className="flex items-center text-orange-400 text-[20px] ">
                         <Icon icon="ion:calendar-outline" />
-                        <span className="mx-2">
-                          {lang === 'en'
-                            ? date.toLocaleDateString('en-EN', options) + time
-                            : date.toLocaleDateString('ua-UA', options) + time}
-                        </span>
+                        <span className="mx-2">{time}</span>
                       </div>
                     </div>
                   </div>
