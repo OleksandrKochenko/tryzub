@@ -7,7 +7,7 @@ export const Values = () => {
   const lang = useSelector(getLang);
 
   return (
-    <div className="flex justify-between w-4/5">
+    <div className="flex flex-col md:flex-row justify-between w-4/5">
       {homePageData.values.map(el => (
         <div
           key={el.name}

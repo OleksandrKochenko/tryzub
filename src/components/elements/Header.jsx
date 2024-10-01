@@ -1,38 +1,64 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MainMenu } from './MainMenu';
 import { Social } from './Social';
 import logo from '../../img/logo_test.jpg';
 import { Langs } from './Langs';
-import { useSelector } from 'react-redux';
-import { getLang } from '../../redux/selectors';
+import { screens } from '../../data/constants';
+import { DonateBtn } from './DonateBtn';
 import { Icon } from '@iconify/react';
+import { useState } from 'react';
+import { Drawer } from '@mui/material';
 
 export const Header = () => {
-  const lang = useSelector(getLang);
-  const navigate = useNavigate();
+  const vw = window.innerWidth;
+  const [openDrawer, setOpenDrawer] = useState(false);
 
-  return (
-    <div className="h-[15vh] bg-[#EBEDEC] flex justify-evenly items-center">
+  return vw > screens.sm ? (
+    <div className=" bg-[#EBEDEC] flex justify-evenly items-center ">
       <NavLink to={'/'}>
         <img src={logo} alt="UCA Tryzub" width={260} />
       </NavLink>
       <MainMenu />
-      <button
-        className="p-2 h-fit bg-red-400 flex justify-center items-center hover:scale-110 transition-transform duration-300"
-        type="button"
-        onClick={() => {
-          navigate('/');
-          setTimeout(() => {
-            const anchor = document.querySelector('#donations');
-            anchor.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }}
-      >
-        <Icon icon="openmoji:light-blue-heart" className="mr-1 text-[22px]" />
-        {lang === 'en' ? 'Donate' : 'Підтримати'}
-      </button>
+      <DonateBtn />
       <Social styles="header" />
       <Langs />
+    </div>
+  ) : (
+    <div className="bg-[#EBEDEC] w-full h-full flex items-center justify-evenly">
+      <DonateBtn />
+      <NavLink to={'/'}>
+        <img src={logo} alt="UCA Tryzub" className="h-[10vh] md:h-[15vh]" />
+      </NavLink>
+      <button type="button" onClick={() => setOpenDrawer(true)}>
+        <Icon
+          icon="material-symbols:menu"
+          className="text-5xl text-red-500 bg-blue-300 p-1 inline-block"
+        />
+      </button>
+      <Drawer
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        anchor="right"
+        PaperProps={{
+          sx: {
+            height: 'fit-content',
+            bgcolor: '#60a5fa',
+            opacity: 0.92,
+          },
+        }}
+      >
+        <div className="w-[60vw] p-[4vw]">
+          <button
+            type="button"
+            onClick={() => setOpenDrawer(false)}
+            className="bg-transparent  absolute top-[4vw] end-[4vw] flex items-center justify-center"
+          >
+            <Icon icon="gridicons:cross" className="text-5xl text-red-500" />
+          </button>
+
+          <MainMenu onClick={() => setOpenDrawer(false)} />
+        </div>
+      </Drawer>
     </div>
   );
 };

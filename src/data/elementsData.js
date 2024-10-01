@@ -144,3 +144,8 @@ export const homePageData = {
     },
   },
 };
+
+export const donateBtnData = {
+  ua: 'Підтримати',
+  en: 'Donate',
+};
