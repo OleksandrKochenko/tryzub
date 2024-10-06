@@ -47,7 +47,7 @@ export const Header = () => {
           },
         }}
       >
-        <div className="w-[60vw] p-[4vw]">
+        <div className="w-[65vw] p-[2vw]">
           <button
             type="button"
             onClick={() => setOpenDrawer(false)}
@@ -57,6 +57,10 @@ export const Header = () => {
           </button>
 
           <MainMenu onClick={() => setOpenDrawer(false)} />
+          <div className=" flex items-center justify-between">
+            <Langs />
+            <Social styles="header" />
+          </div>
         </div>
       </Drawer>
     </div>
