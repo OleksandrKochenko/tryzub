@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getEvents, getLang } from '../../redux/selectors';
 import { fetchEventById } from '../../redux/events/operations_';
 
-export const EventsList = ({ filtredEvents }) => {
+export const EventsList = ({ filtredEvents, onClick }) => {
   const dispatch = useDispatch();
   const lang = useSelector(getLang);
   const { currentEvent_ } = useSelector(getEvents);
@@ -18,7 +18,10 @@ export const EventsList = ({ filtredEvents }) => {
               className={` hover:underline ${
                 currentEvent_?._id === event._id && 'underline'
               } cursor-pointer `}
-              onClick={() => dispatch(fetchEventById(event._id))}
+              onClick={() => {
+                dispatch(fetchEventById(event._id));
+                onClick();
+              }}
             >
               {event.title[lang]}
             </h3>

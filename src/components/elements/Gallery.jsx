@@ -4,6 +4,7 @@ import ReactImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { useEffect } from 'react';
 import { fetchEventById } from '../../redux/events/operations_';
+import { screens } from '../../data/constants';
 
 export const Gallery = ({ filtredEvents }) => {
   const dispatch = useDispatch();
@@ -20,13 +21,15 @@ export const Gallery = ({ filtredEvents }) => {
   }, [filtredEvents.length]);
 
   const images = currentEvent_ && currentEvent_.gallery;
+  const vw = window.innerWidth;
 
   return (
     <section className="bg-slate-200 flex justify-center items-center">
       {images ? (
         <ReactImageGallery
           items={images}
-          thumbnailPosition="left"
+          showThumbnails={vw <= screens.sm ? false : true}
+          thumbnailPosition={vw <= screens.sm ? 'bottom' : 'left'}
           showBullets
           lazyLoad
         />
