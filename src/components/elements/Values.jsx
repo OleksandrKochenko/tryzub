@@ -11,7 +11,7 @@ export const Values = () => {
       {homePageData.values.map(el => (
         <div
           key={el.name}
-          className="max-w-sm p-6 bg-zinc-200 border border-zinc-400 rounded-lg shadow-md "
+          className="max-w-sm p-3 md:p-6 bg-zinc-200 border border-zinc-400 rounded-lg shadow-md mb-1 "
         >
           <div className="flex ">
             <Icon icon={el.icon} className="text-3xl mr-5 text-blue-700" />

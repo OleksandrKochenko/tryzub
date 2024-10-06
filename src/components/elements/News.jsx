@@ -20,30 +20,30 @@ export const News = () => {
       <h5 className="font-semibold text-2xl text-gray-900 pb-2">
         {homePageData.news[lang]}
       </h5>
-      <div className="flex justify-between w-full">
+      <div className="flex flex-col md:flex-row justify-between w-full ">
         {news.slice(-2).map(el => (
           <div
             key={el._id}
-            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow"
+            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow mb-2 md:mb-0"
           >
-            <div className="h-[55%]">
+            <div className="h-[55%] hidden md:block">
               <img
                 className="rounded-t-lg h-full w-full object-cover"
                 src={el.coverImg}
                 alt={el.title[lang]}
               />
             </div>
-            <div className="px-5 pb-5 pt-2 h-[45%]">
+            <div className="p-2 md:px-5 md:pb-5 md:pt-2 md:h-[45%]">
               <p className="text-xs text-gray-600 font-normal">
                 {new Date(el.startDate).toLocaleDateString(
                   `${lang}-${lang.toUpperCase()}`
                 )}
               </p>
 
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+              <h5 className="mb-1 md:mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 ">
                 {el.title[lang]}
               </h5>
-              <p className="mb-3 font-normal text-gray-700  max-h-24 line-clamp-4">
+              <p className="mb-3 font-normal text-gray-700  max-h-24 line-clamp-3 md:line-clamp-4">
                 {el.pressRelease[lang]}
               </p>
               <NavLink

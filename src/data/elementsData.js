@@ -105,8 +105,8 @@ export const homePageData = {
           en: 'E-Transfer Donation',
         },
         method: {
-          ua: 'Ви можете надіслати електронний переказ на адресу ucat@gmail.com, щоб підтримати військові, дитячі та інші ініціативи України.',
-          en: 'You can send an e-Transfer to ucat@gmail.com to support Ukraine’s military, children and other initiatives.',
+          ua: 'Ви можете надіслати електронний переказ на адресу tryzubukraine@gmail.com, щоб підтримати військові, дитячі та інші ініціативи України.',
+          en: 'You can send an e-Transfer to tryzubukraine@gmail.com to support Ukraine’s military, children and other initiatives.',
         },
         icon: 'mage:money-exchange',
       },

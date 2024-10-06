@@ -18,7 +18,7 @@ export const CarouselElement = () => {
   const lang = useSelector(getLang);
 
   return (
-    <div className="w-[80%] shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]">
+    <div className="w-full md:w-[80%] shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]">
       <Carousel
         showThumbs={false}
         showStatus={false}
@@ -38,22 +38,24 @@ export const CarouselElement = () => {
                     <img
                       src={coverImg}
                       alt={title[lang]}
-                      className="h-[85vh] object-cover"
+                      className="h-[40vh] md:h-[85vh] object-cover"
                     />
                   </NavLink>
                   <div className="absolute bottom-10 w-full font-semibold backdrop-blur-sm [text-shadow:_1px_1px_2px_#000] flex flex-col items-center">
-                    <h2 className="text-white text-[38px]">{title[lang]}</h2>
-                    <p className="text-white text-[20px] w-[90%] ">
+                    <h2 className="text-white text-[24px] md:text-[38px]">
+                      {title[lang]}
+                    </h2>
+                    <p className="hidden md:block text-white text-[20px] w-[90%] ">
                       {announce[lang]}
                     </p>
                     <div className="w-full flex justify-center">
-                      <div className="flex items-center text-orange-400 text-[20px] mr-4">
+                      <div className="hidden md:flex items-center text-orange-400 md:text-[20px] mx-1">
                         <Icon icon="mdi:place-outline" />
                         <span className="mx-2">
                           {address[lang] || address.en}
                         </span>
                       </div>
-                      <div className="flex items-center text-orange-400 text-[20px] ">
+                      <div className="flex items-center text-orange-400 text-[14px] md:text-[20px] ">
                         <Icon icon="ion:calendar-outline" />
                         <span className="mx-2">{time}</span>
                       </div>

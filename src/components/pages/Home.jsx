@@ -15,7 +15,7 @@ export const HomePage = () => {
       <CarouselElement />
       {
         /* Here should be important text for search engines*/
-        <h1 className="w-4/5 text-center text-3xl my-20 ">
+        <h1 className="w-4/5 text-center text-xl md:text-3xl my-10 md:my-20 ">
           {homePageData.hero[lang]}
         </h1>
       }
