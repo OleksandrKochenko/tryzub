@@ -39,3 +39,8 @@ export const formatTimeAndDate = (start, end, lang) => {
       } ${endTime}`
     : `${startDate}, ${startTime}`;
 };
+
+export const validateLang = lang => {
+  const allowedLangs = ['en', 'ua'];
+  return allowedLangs.includes(lang) ? lang : 'en';
+};
