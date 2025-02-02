@@ -34,6 +34,7 @@ export const SingleEventPage = () => {
     endDate,
     address,
     contacts,
+    desc_links,
   } = currentEvent;
 
   const timeAndDate = formatTimeAndDate(startDate, endDate, lang);
@@ -64,6 +65,23 @@ export const SingleEventPage = () => {
           </div>
           <div className="text-lg text-gray-800 mb-5">
             <p>{pressRelease ? pressRelease[lang] : description[lang]}</p>
+            {desc_links && (
+              <div>
+                {desc_links.map((el, idx) => (
+                  <p key={idx}>
+                    <span>{el.name[lang]}</span>
+                    <a
+                      className="hover:underline text-indigo-600"
+                      href={el.link}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      {el.link}
+                    </a>
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
           {contacts && (
             <div className="text-lg font-semibold  text-gray-800 mb-5">
@@ -75,6 +93,21 @@ export const SingleEventPage = () => {
                 <p className="py-1">{contacts.phone}</p>
                 <p className="py-1">{contacts.email}</p>
               </div>
+              {contacts.links && (
+                <div className="flex flex-col font-semibold text-indigo-600">
+                  {contacts.links.map((el, idx) => (
+                    <a
+                      className="hover:underline"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      key={idx}
+                      href={el.link}
+                    >
+                      {el.name}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>

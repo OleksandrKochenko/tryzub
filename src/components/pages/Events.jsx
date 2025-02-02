@@ -66,7 +66,7 @@ export const EventsPage = () => {
             gallery,
           }) => {
             const date = new Date(startDate);
-            const day = date.getDate();
+            const day = date.getUTCDate();
             const monthEn = date.toLocaleString('en-EN', { month: 'short' });
             const monthUa = date.toLocaleString('ua-UA', { month: 'short' });
             const time = formatTimeAndDate(startDate, endDate, lang);
