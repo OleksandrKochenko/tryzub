@@ -14,7 +14,7 @@ export const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return vw > screens.sm ? (
-    <div className=" bg-[#EBEDEC] flex justify-evenly items-center ">
+    <div className=" bg-[#ffffff] flex justify-evenly items-center ">
       <NavLink to={'/'}>
         <img src={logo} alt="UCA Tryzub" width={260} />
       </NavLink>
