@@ -2,9 +2,9 @@ import { NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { socialData } from '../../data/elementsData';
 
-export const Social = ({ styles }) => {
+export const Social = ({ styles = "header"}) => {
   return (
-    <div className="flex items-center">
+    <div className={`flex items-center ${styles === "footer" ? 'space-x-5' : 'space-x-3'}`}>
       {socialData.map(({ icon, style, link, hoverColor }, idx) => {
         return (
           <NavLink
@@ -15,7 +15,7 @@ export const Social = ({ styles }) => {
           >
             <Icon
               icon={icon}
-              className={`${style[styles]} ${hoverColor} transition-colors duration-300`}
+              className={`transition-colors duration-300 ${hoverColor} ${style[styles]}`}
             />
           </NavLink>
         );
